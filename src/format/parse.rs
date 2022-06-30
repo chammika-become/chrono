@@ -409,6 +409,8 @@ where
 
                     &TimezoneName => {
                         try_consume!(scan::timezone_name_skip(s));
+                        let offset = 0;
+                        parsed.set_offset(i64::from(offset)).map_err(|e| (s, e))?;
                     }
 
                     &TimezoneOffsetColon | &TimezoneOffset => {
